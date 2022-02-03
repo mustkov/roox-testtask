@@ -9,3 +9,6 @@
     $ git clone https://github.com/mustkov/roox-testtask.git
     $ cd roox-testtask
     $ yarn install
+    
+## Веб-приложение
+### [Ссылка](https://mustkov.github.io/roox-testtasks/)
