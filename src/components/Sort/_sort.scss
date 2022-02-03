@@ -1,0 +1,31 @@
+.sort {
+  width: 23%;
+  background: #bdbdbd;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-top: 35px;
+}
+
+.sort_name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.sort_button {
+  background: #4b51ef;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 5px 15px 5px 15px;
+  height: auto;
+  //font
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #ffffff;
+  text-transform: lowercase;
+}
