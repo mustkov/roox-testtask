@@ -11,4 +11,4 @@
     $ yarn install
     
 ## Веб-приложение
-### [Ссылка](https://mustkov.github.io/roox-testtasks/)
+### [Ссылка](https://mustkov.github.io/)
