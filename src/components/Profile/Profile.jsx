@@ -46,17 +46,21 @@ function Profile(props) {
   };
 
   const validation = (name, form, index) => {
-    const emailVal = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    const nameVal = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
+    const emailVal =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    const nameVal =
+      /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
     const usernameVal = /^[a-zA-Z\-]+$/;
     const phoneVal = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-    const websiteVal = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+    const websiteVal =
+      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
 
     if (form == "E-mail") {
       if (!emailVal.test(String(name).toLowerCase())) {
         setValid(false);
         document.getElementById(index).classList.add("color_non_validate");
       } else {
+        setValid(true);
         document.getElementById(index).classList.remove("color_non_validate");
       }
     }
@@ -65,6 +69,7 @@ function Profile(props) {
         setValid(false);
         document.getElementById(index).classList.add("color_non_validate");
       } else {
+        setValid(true);
         document.getElementById(index).classList.remove("color_non_validate");
       }
     }
@@ -73,6 +78,7 @@ function Profile(props) {
         setValid(false);
         document.getElementById(index).classList.add("color_non_validate");
       } else {
+        setValid(true);
         document.getElementById(index).classList.remove("color_non_validate");
       }
     }
@@ -81,6 +87,7 @@ function Profile(props) {
         setValid(false);
         document.getElementById(index).classList.add("color_non_validate");
       } else {
+        setValid(true);
         document.getElementById(index).classList.remove("color_non_validate");
       }
     }
@@ -89,42 +96,41 @@ function Profile(props) {
         setValid(false);
         document.getElementById(index).classList.add("color_non_validate");
       } else {
+        setValid(true);
         document.getElementById(index).classList.remove("color_non_validate");
       }
     }
   };
 
   function Forms() {
-    return (
-      Object.keys(forms).map((form, index) => (
-        <form
-          onSubmit={handleSubmit}
-          className="profile_form"
-          key={`${form}_${index}`}
-        >
-          <label htmlFor={index} className="profile_form__label">
-            {form}
-          </label>
-          <input
-            required={form === "Comment" ? false : true}
-            type="text"
-            className={
-              editState
-                ? "profile_form__input form-control browser-default"
-                : "profile_form__input edit form-control browser-default"
-            }
-            id={index}
-            defaultValue={forms[form]}
-            onChange={(e) => {
-              setValue(e.target.value);
-              edit(e.target.value, form);
-              validation(e.target.value, form, index);
-            }}
-            disabled={editState ? false : true}
-          />
-        </form>
-      ))
-    )
+    return Object.keys(forms).map((form, index) => (
+      <form
+        onSubmit={handleSubmit}
+        className="profile_form"
+        key={`${form}_${index}`}
+      >
+        <label htmlFor={index} className="profile_form__label">
+          {form}
+        </label>
+        <input
+          required={form === "Comment" ? false : true}
+          type="text"
+          className={
+            editState
+              ? "profile_form__input form-control browser-default"
+              : "profile_form__input edit form-control browser-default"
+          }
+          id={index}
+          defaultValue={forms[form]}
+          onChange={(e) => {
+            setValue(e.target.value);
+            edit(e.target.value, form);
+            validation(e.target.value, form, index);
+          }}
+          disabled={editState ? false : true}
+        />
+      </form>
+    ));
   }
 
   return (
@@ -140,9 +146,7 @@ function Profile(props) {
             Редактировать
           </a>
         </div>
-        <div className="profile_block">
-        {Forms()}
-        </div>
+        <div className="profile_block">{Forms()}</div>
         <button
           disabled={editState && valid === true ? false : true}
           onClick={dispatchJSON}
